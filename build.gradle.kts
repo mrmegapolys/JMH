@@ -1,3 +1,4 @@
+import org.gradle.api.file.DuplicatesStrategy.WARN
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -11,8 +12,13 @@ repositories {
     mavenCentral()
 }
 
+jmh {
+    duplicateClassesStrategy = WARN
+}
+
 dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.12.0")
+    implementation("com.google.protobuf:protobuf-java:3.14.0")
 }
 
 tasks.withType<KotlinCompile> {
